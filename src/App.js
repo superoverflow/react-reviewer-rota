@@ -7,6 +7,9 @@ function App() {
     <div className="App">
         <ReviewerForm />
     </div>
+    <footer>
+      <p> 2019@superoverflow https://github.com/superoverflow/react-reviewer-rota </p>
+    </footer>
   );
 }
 
