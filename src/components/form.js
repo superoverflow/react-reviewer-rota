@@ -88,14 +88,14 @@ export default function ReviewerForm(props) {
                     <Col sm="2">
                         <Form.Label>Reviewers: </Form.Label>
                     </Col>
-                    <Col sm="8">
+                    <Col sm="6">
                         <Form.Control
                             type="text"
                             placeholder="comma seperated list of reviewers, eg. Daniele, Ioan, Cyrus, Zacharo, Neil, Johanna"
                             onChange={e => setNames(e.target.value)}
                         />
                     </Col>
-                    <Col sm="2">
+                    <Col sm="4">
                         <Button
                             variant="primary"
                             onClick={handleSubmit}>
