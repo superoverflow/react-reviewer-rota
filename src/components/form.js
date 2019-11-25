@@ -1,4 +1,8 @@
 import React, { useState } from 'react'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 
 function generateRota(reviewers) {
     /*given n reviewers, where n > 2 eg. A, B, C, D
@@ -36,11 +40,11 @@ function ReviewerTable(props) {
         <table>
             <ReviewerTableHeader rota={props.rota} />
             <tbody>
-            {
-                Object.keys(props.rota).sort().map(k =>
-                    <ReviewerTableRow name={k} reviewers={props.rota[k]} />
-                )
-            }
+                {
+                    Object.keys(props.rota).sort().map(k =>
+                        <ReviewerTableRow name={k} reviewers={props.rota[k]} />
+                    )
+                }
             </tbody>
         </table>
     )
@@ -76,17 +80,20 @@ export default function ReviewerForm(props) {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Reviewers:
-                    <input
-                        type="text"
-                        value={names}
-                        onChange={e => setNames(e.target.value)}
-                    />
-                </label>
-                <input type="submit" value="Get Rota!" />
-            </form>
+            <Form>
+                <Form.Group as={Row} controlId="reviewersInput">
+                    <Form.Label column sm="2">Reviewers: </Form.Label>
+                    <Col sm="8">
+                        <Form.Control
+                            type="text"
+                            placeholder="comma seperated list of reviewers"
+                            onChange={e => setNames(e.target.value)}
+                        />
+                    </Col>
+                    <Button column sm="2" variant="primary" onClick={handleSubmit}>Get Rota!</Button>
+                </Form.Group>
+            </Form>
+
             <ReviewerTable rota={rota} />
         </>
     )
