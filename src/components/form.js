@@ -91,7 +91,7 @@ export default function ReviewerForm(props) {
                     <Col sm="8">
                         <Form.Control
                             type="text"
-                            placeholder="comma seperated list of reviewers"
+                            placeholder="comma seperated list of reviewers, eg. Daniele, Ioan, Cyrus, Zacharo, Neil, Johanna"
                             onChange={e => setNames(e.target.value)}
                         />
                     </Col>
