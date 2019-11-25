@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7d5600e3feca4450f6b1c439bbab8cb9",
+    "revision": "a4992e83c87e4d58c089092c367cd299",
     "url": "/react-reviewer-rota/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-reviewer-rota/static/css/2.b0bb7f2c.chunk.css"
   },
   {
-    "revision": "9564a5d35851172f779c",
+    "revision": "fb97dc7f6aa77d4b76b4",
     "url": "/react-reviewer-rota/static/css/main.d9fb3742.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-reviewer-rota/static/js/2.128d6641.chunk.js"
   },
   {
-    "revision": "9564a5d35851172f779c",
-    "url": "/react-reviewer-rota/static/js/main.5ad488e3.chunk.js"
+    "revision": "fb97dc7f6aa77d4b76b4",
+    "url": "/react-reviewer-rota/static/js/main.a18f836d.chunk.js"
   },
   {
     "revision": "badd964b2efcbdf7a82b",
