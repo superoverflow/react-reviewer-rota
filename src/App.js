@@ -5,9 +5,7 @@ import ReviewerForm from './components/form'
 function App() {
   return (
     <div className="App">
-      <body>
         <ReviewerForm />
-      </body>
     </div>
   );
 }

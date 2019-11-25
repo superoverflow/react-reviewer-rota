@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import Table from 'react-bootstrap/Table'
+import Container from 'react-bootstrap/Container'
 
 function generateRota(reviewers) {
     /*given n reviewers, where n > 2 eg. A, B, C, D
@@ -14,8 +16,12 @@ function generateRota(reviewers) {
     */
     var rota = {}
     const reviewers_shuffled = shuffle(reviewers)
-    for (var index = 0; index < reviewers_shuffled.length; index++) {
-        rota[reviewers_shuffled[index]] = getReviewer(reviewers_shuffled, index)
+    const len = reviewers_shuffled.length
+    for (var index = 0; index < len; index++) {
+        rota[reviewers_shuffled[index]] = [
+            reviewers_shuffled[(index - 1 + len) % len] ,
+            reviewers_shuffled[(index + 1 + len) % len],
+        ]
     }
     console.log(rota)
     return rota
@@ -25,34 +31,31 @@ function shuffle(arrays) {
     return arrays.sort(() => Math.random() - 0.5)
 }
 
-function getReviewer(reviewers, index) {
-    if (index === 0) {
-        return [reviewers.slice(-1), reviewers[1]]
-    } else if (index === reviewers.length - 1) {
-        return [reviewers[reviewers.length - 2], reviewers[0]]
-    } else {
-        return [reviewers[index - 1], reviewers[index + 1]]
-    }
-}
-
 function ReviewerTable(props) {
     return (
-        <table>
-            <ReviewerTableHeader rota={props.rota} />
+        <Table striped bordered hover>
+            <thead>
+                <ReviewerTableHeader rota={props.rota} />
+            </thead>
             <tbody>
                 {
                     Object.keys(props.rota).sort().map(k =>
-                        <ReviewerTableRow name={k} reviewers={props.rota[k]} />
+                        <ReviewerTableRow key={k} name={k} reviewers={props.rota[k]} />
                     )
                 }
             </tbody>
-        </table>
+        </Table>
     )
 }
 
 function ReviewerTableHeader(props) {
     if (Object.keys(props.rota).length > 0) {
-        return <tr><th>Name</th> <th>Reviewers</th></tr>
+        return (
+            <tr>
+                <th>Name</th>
+                <th colSpan="2">Reviewers</th>
+            </tr>
+        )
     } else {
         return <></>
     }
@@ -79,10 +82,12 @@ export default function ReviewerForm(props) {
     }
 
     return (
-        <>
+        <Container className="p-3">
             <Form>
                 <Form.Group as={Row} controlId="reviewersInput">
-                    <Form.Label column sm="2">Reviewers: </Form.Label>
+                    <Col sm="2">
+                        <Form.Label>Reviewers: </Form.Label>
+                    </Col>
                     <Col sm="8">
                         <Form.Control
                             type="text"
@@ -90,11 +95,17 @@ export default function ReviewerForm(props) {
                             onChange={e => setNames(e.target.value)}
                         />
                     </Col>
-                    <Button column sm="2" variant="primary" onClick={handleSubmit}>Get Rota!</Button>
+                    <Col sm="2">
+                        <Button
+                            variant="primary"
+                            onClick={handleSubmit}>
+                            Get Rota!
+                        </Button>
+                    </Col>
                 </Form.Group>
             </Form>
 
             <ReviewerTable rota={rota} />
-        </>
+        </Container>
     )
 }
