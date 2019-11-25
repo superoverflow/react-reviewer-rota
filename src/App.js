@@ -4,12 +4,14 @@ import ReviewerForm from './components/form'
 
 function App() {
   return (
-    <div className="App">
-        <ReviewerForm />
-    </div>
-    <footer>
-      <p> 2019@superoverflow https://github.com/superoverflow/react-reviewer-rota </p>
-    </footer>
+    <>
+      <div className="App">
+          <ReviewerForm />
+      </div>
+      <footer>
+        <p> 2019@superoverflow https://github.com/superoverflow/react-reviewer-rota </p>
+      </footer>
+    </>
   );
 }
 
